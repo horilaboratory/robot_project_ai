@@ -37,12 +37,18 @@ YOLO 物体認識 (HailoRT)
 - `/image_annotated/compressed` (`sensor_msgs/CompressedImage`, jpeg)
 - `/detections` (`vision_msgs/Detection2DArray`): 元画像のピクセル座標、`class_id` はクラス名
 
-パラメータ: `hef_path`, `device`, `width`, `height`, `cam_fps`, `score_threshold` (既定 0.5),
+パラメータ: `hef_path`, `device` (既定 `/dev/video0`), `width`, `height`, `cam_fps`,
+`score_threshold` (既定 0.5),
 `frame_id`, `publish_raw`, `publish_compressed`, `jpeg_quality`, `timeout_ms`
 
     docker run -it --rm --net=host --device /dev/video8 --device /dev/hailo0 \
         -e ROS_DOMAIN_ID=0 -v $PWD/ws:/ws hailort-ros2-humble:latest \
-        python3 yolo_hailo_publisher.py --ros-args -p hef_path:=/ws/yolov8m.hef
+        python3 yolo_hailo_publisher.py --ros-args \
+        -p hef_path:=/ws/yolov8m.hef -p device:=/dev/video8
+
+カメラを変更する場合は、`--device` で Docker に渡すデバイスと、ROS パラメータ
+`-p device:=/dev/videoN` の両方を指定する。Python ノード単体で実行する場合も
+`python3 yolo_hailo_publisher.py --ros-args -p device:=/dev/videoN` と指定できる。
 
 YOLOv8m 姿勢推定 (HailoRT)
 --------------------------
