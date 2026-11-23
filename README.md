@@ -3,9 +3,22 @@ README
 
 本プロジェクトは、ROS 2 上で Raspberry Pi AI HAT+ を使用するためのものである。
 
-コンテナイメージは次のコマンドで取得できる。
+## 実行環境
+本プロジェクトを実行するためには，Raspberry Pi 5（AI HAT+搭載）と以下の環境が必要である．
+- Raspberry Pi OS (64 bit) trixie
+- Docker
+- Hailoドライバ（Firmware Version: 4.23.0）
 
-    docker pull ghcr.io/horilaboratory/robot_project_ai/ros2-hailort:latest
+実行環境であるHailoRTとROS2はDockerコンテナ内で実行する．コンテナイメージは次のコマンドで取得できる。
+
+```bash
+docker pull ghcr.io/horilaboratory/robot_project_ai/ros2-hailort:latest
+```
+
+コンテナの環境は以下の通りである．
+- OS: Ubuntu 22.04
+- ROS 2: Humble
+- HailoRT: 4.23.0 (Pythonバインディング含む)
 
 USB camera test
 ---------------

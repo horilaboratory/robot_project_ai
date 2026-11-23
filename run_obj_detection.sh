@@ -1,5 +1,5 @@
 #!/bin/bash
-CAMERA_DEVICE=/dev/video8
+CAMERA_DEVICE=/dev/video0
 
 docker run -it --rm \
     --net=host \
