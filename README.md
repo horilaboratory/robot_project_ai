@@ -3,6 +3,10 @@ README
 
 本プロジェクトは、ROS 2 上で Raspberry Pi AI HAT+ を使用するためのものである。
 
+コンテナイメージは次のコマンドで取得できる。
+
+    docker pull ghcr.io/horilaboratory/robot_project_ai/ros2-hailort:latest
+
 USB camera test
 ---------------
 
@@ -17,7 +21,7 @@ USB camera test
 Raspberry Pi 上 (コンテナ):
 
     docker run -it --rm --net=host --device /dev/video8 \
-        -e ROS_DOMAIN_ID=0 -v $PWD/ws:/ws hailort-ros2-humble:latest \
+        -e ROS_DOMAIN_ID=0 -v $PWD/ws:/ws ghcr.io/horilaboratory/robot_project_ai/ros2-hailort:latest \
         python3 usb_cam_publisher.py
 
 - カメラのデバイスは `v4l2-ctl --list-devices` で確認する。Raspberry Pi 5 では
@@ -42,7 +46,7 @@ YOLO 物体認識 (HailoRT)
 `frame_id`, `publish_raw`, `publish_compressed`, `jpeg_quality`, `timeout_ms`
 
     docker run -it --rm --net=host --device /dev/video8 --device /dev/hailo0 \
-        -e ROS_DOMAIN_ID=0 -v $PWD/ws:/ws hailort-ros2-humble:latest \
+        -e ROS_DOMAIN_ID=0 -v $PWD/ws:/ws ghcr.io/horilaboratory/robot_project_ai/ros2-hailort:latest \
         python3 yolo_hailo_publisher.py --ros-args \
         -p hef_path:=/ws/yolov8m.hef -p device:=/dev/video8
 
@@ -64,7 +68,7 @@ Hailo-8 用 HEF と互換性のある Hailo デバイス・HailoRT が必要。
 
 ```sh
 docker run -it --rm --net=host --device /dev/video8 --device /dev/hailo0 \
-    -e ROS_DOMAIN_ID=0 -v "$PWD/ws:/ws" hailort-ros2-humble:latest \
+    -e ROS_DOMAIN_ID=0 -v "$PWD/ws:/ws" ghcr.io/horilaboratory/robot_project_ai/ros2-hailort:latest \
     python3 yolov8m_pose_publisher.py --ros-args \
     -p device:=/dev/video8 -p hef_path:=/ws/yolov8m_pose.hef
 ```

@@ -1,5 +1,5 @@
 #!/bin/bash
-CAMERA_DEVICE=/dev/video8
+CAMERA_DEVICE=/dev/video0
 
 docker run \
     -it \
@@ -9,7 +9,7 @@ docker run \
     --device /dev/hailo0 \
     -e ROS_DOMAIN_ID=0 \
     -v "$PWD/ws:/ws" \
-    hailort-ros2-humble:latest \
+    ghcr.io/horilaboratory/robot_project_ai/ros2-hailort:latest \
     python3 yolov8m_pose_publisher.py \
     --ros-args \
     -p "device:=$CAMERA_DEVICE" \

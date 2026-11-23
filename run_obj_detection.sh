@@ -7,7 +7,7 @@ docker run -it --rm \
     --device /dev/hailo0 \
     -e ROS_DOMAIN_ID=0 \
     -v "$PWD/ws:/ws" \
-    hailort-ros2-humble:latest \
+    ghcr.io/horilaboratory/robot_project_ai/ros2-hailort:latest \
     python3 yolo_hailo_publisher.py \
         --ros-args \
         -p hef_path:=/ws/yolov8m.hef \
