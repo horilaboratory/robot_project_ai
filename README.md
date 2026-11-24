@@ -9,6 +9,14 @@ README
 - Docker
 - Hailoドライバ（Firmware Version: 4.23.0）
 
+Hailoドライバは以下の手順でインストールする．
+
+```bash
+sudo apt install dkms
+sudo apt install hailo-all=4.23.0
+sudo reboot
+```
+
 実行環境であるHailoRTとROS2はDockerコンテナ内で実行する．コンテナイメージは次のコマンドで取得できる．
 
 ```bash
