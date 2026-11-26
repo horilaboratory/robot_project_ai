@@ -5,7 +5,7 @@ docker run -it --rm \
     --net=host \
     --device "$CAMERA_DEVICE" \
     --device /dev/hailo0 \
-    -e ROS_DOMAIN_ID=0 \
+    -e ROS_DOMAIN_ID=1 \
     -v "$PWD/ws:/ws" \
     ghcr.io/horilaboratory/robot_project_ai/ros2-hailort:latest \
     python3 yolo_hailo_publisher.py \
