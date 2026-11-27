@@ -1,7 +1,10 @@
 README
 ========
 
-本プロジェクトは，ROS 2 上で Raspberry Pi AI HAT+ を使用するためのものである．
+本プロジェクトはRaspberry Piとそれに搭載されたAI HAT+（Hailo 8プロセッサ）をROS2で利用するためのプロジェクトである．
+
+なお，以下のリポジトリで公開されているロボットプロジェクトの資料でも利用している．
+[robot_project](https://github.com/horilaboratory/robot_project)
 
 ## 実行環境
 本プロジェクトを実行するためには，Raspberry Pi 5（AI HAT+搭載）と以下の環境が必要である．
